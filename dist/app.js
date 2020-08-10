@@ -35,8 +35,11 @@ app.get('/', /*#__PURE__*/function () {
 
           case 2:
             result = _context.sent;
+            res.send({
+              result: result
+            });
 
-          case 3:
+          case 4:
           case "end":
             return _context.stop();
         }
