@@ -4,6 +4,8 @@ require("@babel/polyfill");
 
 var _express = _interopRequireDefault(require("express"));
 
+var _cors = _interopRequireDefault(require("cors"));
+
 var _models = _interopRequireDefault(require("./models"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -17,6 +19,7 @@ var app = (0, _express["default"])();
 _models["default"].sequelize.sync();
 
 var PORT = process.env.PORT || 5000;
+app.use((0, _cors["default"])());
 app.use(_express["default"].json());
 app.use(_express["default"].urlencoded({
   extended: true
@@ -35,9 +38,7 @@ app.get('/', /*#__PURE__*/function () {
 
           case 2:
             result = _context.sent;
-            res.send({
-              result: result
-            });
+            res.send(result);
 
           case 4:
           case "end":
